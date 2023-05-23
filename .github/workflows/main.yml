@@ -32,7 +32,7 @@ jobs:
             \`\`\`
             `;
 
-            github.issues.createComment({
+            github.rest.issues.createComment({
               repo: context.repo.repo,
               owner: context.repo.owner,
               issue_number: context.issue.number,
