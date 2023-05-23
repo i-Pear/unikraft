@@ -23,7 +23,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const fs = require('fs');
-            const results = fs.readFileSync('test_results.txt', 'utf8');
+            const results = fs.readFileSync('ci/libc_tests/test_results.txt', 'utf8');
 
             const comment = `
             ## Test Results
