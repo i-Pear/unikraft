@@ -1,5 +1,4 @@
-#sudo apt-get update -y
-#sudo apt-get install -y qemu-system-x86-64
+sudo apt-get update -y && apt-get install -y qemu-system-x86-64
 
 cd ci/libc_tests
 git clone https://github.com/unikraft/app-helloworld
