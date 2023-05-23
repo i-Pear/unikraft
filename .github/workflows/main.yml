@@ -24,7 +24,6 @@ jobs:
           script: |
             const fs = require('fs');
             const results = fs.readFileSync('test_results.txt', 'utf8');
-            const context = github.context;
 
             const comment = `
             ## Test Results
