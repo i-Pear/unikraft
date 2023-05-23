@@ -28,7 +28,7 @@ jobs:
             const comment = `
             ## Test Results
             \`\`\`
-            ${results}
+            Hi! For test
             \`\`\`
             `;
 
