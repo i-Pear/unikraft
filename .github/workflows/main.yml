@@ -16,25 +16,3 @@ jobs:
       - name: Run test script
         run: |
           bash ci/libc_tests/run_tests.sh
-
-      - name: Comment PR with test results
-        uses: actions/github-script@v4
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const fs = require('fs');
-            const results = fs.readFileSync('ci/libc_tests/test_results.txt', 'utf8');
-
-            const comment = `
-            ## Test Results
-            \`\`\`
-            Hi! For test
-            \`\`\`
-            `;
-
-            github.rest.issues.createComment({
-              repo: context.repo.repo,
-              owner: context.repo.owner,
-              issue_number: context.issue.number,
-              body: comment
-            });
