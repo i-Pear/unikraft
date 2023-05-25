@@ -1,6 +1,6 @@
 UK_ROOT ?= $(PWD)/../../../
 UK_LIBS ?= $(PWD)/../
-LIBS := $(UK_LIBS)/lib-libc-test
+LIBS := $(UK_LIBS)/lib-libc-test:$(UK_LIBS)/lib-musl
 
 all:
 	@$(MAKE) -C $(UK_ROOT) A=$(PWD) L=$(LIBS)
