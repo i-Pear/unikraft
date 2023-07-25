@@ -392,3 +392,15 @@ void uk_sched_dumpk_threads(int klvl, struct uk_sched *s)
 			  (t->flags & UK_THREADF_UKTLS)    ? 'T' : '-');
 	}
 }
+
+UK_SYSCALL_R_DEFINE(long, sched_getaffinity, int, pid, long, cpusetsize, void*, mask)
+{
+	UK_WARN_STUBBED();
+	return 0;
+}
+
+UK_SYSCALL_R_DEFINE(long, sched_setaffinity, int, pid, long, cpusetsize, void*, mask)
+{
+	UK_WARN_STUBBED();
+	return 0;
+}
