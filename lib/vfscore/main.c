@@ -325,6 +325,12 @@ UK_SYSCALL_R_DEFINE(int, mknod, const char*, pathname, mode_t, mode, dev_t, dev)
 	return __xmknod_helper(0, pathname, mode, &dev);
 }
 
+UK_SYSCALL_R_DEFINE(int, mknodat, int, dirfd, const char*, pathname, mode_t, mode, dev_t, dev)
+{
+	UK_WARN_STUBBED();
+	return 0;
+}
+
 UK_TRACEPOINT(trace_vfs_lseek, "%d 0x%x %d", int, off_t, int);
 UK_TRACEPOINT(trace_vfs_lseek_ret, "0x%x", off_t);
 UK_TRACEPOINT(trace_vfs_lseek_err, "%d", int);

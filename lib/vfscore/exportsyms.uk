@@ -150,6 +150,9 @@ uk_syscall_r_truncate
 mknod
 uk_syscall_e_mknod
 uk_syscall_r_mknod
+mknodat
+uk_syscall_e_mknodat
+uk_syscall_r_mknodat
 preadv
 preadv64
 uk_syscall_e_preadv
