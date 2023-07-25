@@ -277,3 +277,15 @@ UK_SYSCALL_R_DEFINE(int, madvise, void *, addr, size_t, len, int, advice)
 
 	return 0;
 }
+
+UK_SYSCALL_R_DEFINE(int, msync, void*, addr, size_t, length, int, flags)
+{
+	UK_WARN_STUBBED();
+	return -ENOTSUP;
+}
+
+UK_SYSCALL_R_DEFINE(int, mlock, const void*, addr, size_t, len)
+{
+	UK_WARN_STUBBED();
+	return 0;
+}
