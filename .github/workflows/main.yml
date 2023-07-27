@@ -13,6 +13,5 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Run test script
-        run: |
-          bash ci/libc_tests/run_tests.sh
+      - name: Run tests
+        uses: unikraft/testdata-db@workflow_unikraft_libc-test
