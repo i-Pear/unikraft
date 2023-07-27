@@ -1,0 +1,17 @@
+name: libc functional test
+
+on:
+  pull_request:
+    branches:
+      - staging
+
+jobs:
+  lib-libc-test:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Run tests
+        uses: unikraft/testdata-db@workflow_unikraft_libc-test
