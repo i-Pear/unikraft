@@ -8,7 +8,6 @@ before opening a new PR as this will cover the PR process:
   https://unikraft.org/docs/contributing/
 
 -->
-    
 ### Prerequisite checklist
 
 <!--
