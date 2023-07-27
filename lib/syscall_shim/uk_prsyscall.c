@@ -323,6 +323,7 @@
 enum param_type {
 	PT_UNKNOWN = 0x0,
 	PT_BOOL, /* Boolean: true, false */
+	PT_DEC, /* Signed decimal */
 	PT_UDEC, /* Unsigned decimal */
 	PT_HEX, /* Hexadecimal */
 	PT_OCTAL, /* Octal */
@@ -672,6 +673,11 @@ static void pr_param(struct uk_streambuf *sb, int fmtf,
 	case PT_UDEC:
 		uk_streambuf_shcc(sb, fmtf, VALUE);
 		uk_streambuf_printf(sb, "%lu", (unsigned long) param);
+		uk_streambuf_shcc(sb, fmtf, RESET);
+		break;
+	case PT_DEC:
+		uk_streambuf_shcc(sb, fmtf, VALUE);
+		uk_streambuf_printf(sb, "%ld", (long) param);
 		uk_streambuf_shcc(sb, fmtf, RESET);
 		break;
 	case PT_HEX:
@@ -1040,6 +1046,22 @@ static void pr_syscall(struct uk_streambuf *sb, int fmtf,
 		PR_SYSRET(sb, fmtf, PT_FD, rc);
 		break;
 #endif /* HAVE_uk_syscall_dup2 */
+
+#ifdef HAVE_uk_syscall_eventfd
+	case SYS_eventfd:
+		VPR_SYSCALL(sb, fmtf, syscall_num, args, rc == 0,
+			    PT_DEC);
+		PR_SYSRET(sb, fmtf, PT_FD, rc);
+		break;
+#endif /* HAVE_uk_syscall_eventfd */
+
+#ifdef HAVE_uk_syscall_eventfd2
+	case SYS_eventfd2:
+		VPR_SYSCALL(sb, fmtf, syscall_num, args, rc == 0,
+			    PT_DEC, PT_OFLAGS);
+		PR_SYSRET(sb, fmtf, PT_FD, rc);
+		break;
+#endif /* HAVE_uk_syscall_eventfd2 */
 
 #ifdef HAVE_uk_syscall_gettid
 	case SYS_gettid:
