@@ -2,6 +2,7 @@ name: libc functional test
 
 on:
   pull_request:
+    types: [opened, synchronize, reopened]
     branches:
       - staging
 
