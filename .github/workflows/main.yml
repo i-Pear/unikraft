@@ -1,4 +1,4 @@
-name: libc CI/CD on PRs
+name: libc functional test
 
 on:
   pull_request:
@@ -7,20 +7,11 @@ on:
 
 jobs:
   lib-libc-test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-
-      - name: Enable KVM group perms
-        run: |
-          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
-          sudo udevadm control --reload-rules
-          sudo udevadm trigger --name-match=kvm
-          sudo apt-get update
-          sudo apt-get install -y libvirt-clients libvirt-daemon-system libvirt-daemon virtinst bridge-utils qemu qemu-system-x86
-          sudo usermod -a -G kvm,libvirt $USER
 
       - name: Run test script
         run: |
