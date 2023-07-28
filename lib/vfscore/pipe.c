@@ -204,10 +204,10 @@ static unsigned long pipe_buf_read(struct pipe_buf *pipe_buf,
 		goto out;
 
 	/* Copy in one piece */
-	if (cons_idx + to_read <= pipe_buf->capacity)
+	if (cons_idx + to_read <= pipe_buf->capacity) {
 		memcpy(iovec_data, pipe_buf->data + cons_idx, to_read);
 		((char*)iovec_data)[0]=0;
-
+	}
 	else {
 		int first_copy_bytes;
 		int second_copy_bytes;
